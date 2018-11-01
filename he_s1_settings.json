@@ -1,0 +1,14 @@
+{
+    "launcher": {
+        "setting_lang": "he",
+        "profile_name": "משחקים לשלום",
+        "profile_version": "1.13.1"
+    },
+    "options": {
+        "lang": "he_il"
+    },
+    "servers": {
+        "lang": "he",
+        "server": "1"
+    }
+}

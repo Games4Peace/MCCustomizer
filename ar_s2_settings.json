@@ -1,0 +1,14 @@
+{
+    "launcher": {
+        "setting_lang": "ar",
+        "profile_name": "ألعاب للسلام",
+        "profile_version": "1.13.1"
+    },
+    "options": {
+        "lang": "ar_sa"
+    },
+    "servers": {
+        "lang": "ar",
+        "server": "2"
+    }
+}
