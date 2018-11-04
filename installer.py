@@ -4,6 +4,8 @@ import json
 import re
 from shutil import copyfile
 
+print("version 1.0_7")
+
 local_path = ''
 if hasattr(sys, 'frozen'):
     local_path = sys._MEIPASS
@@ -15,7 +17,7 @@ print('.')
 installer_settings_filepath = os.path.join(local_path, 'settings.json')
 installer_settings = {}
 try:
-    with open(installer_settings_filepath, 'r', encoding='utf8') as f:
+    with open(installer_settings_filepath, 'r') as f:
         installer_settings=json.loads(f.read())
 except Exception as e:
     input('(Error 4)Error in installer. Try:\n' +
@@ -31,13 +33,13 @@ options_filepath = os.path.join(minecraft_filepath, 'options.txt')
 launcher_profiles_content = ''
 options_content = ''
 try:
-    with open(launcher_profiles_filepath, 'r', encoding='utf8') as f:
+    with open(launcher_profiles_filepath, 'r') as f:
         launcher_profiles_content=json.loads(f.read())
 except FileNotFoundError as e:
     launcher_profiles_content={}
 
 try:
-    with open(options_filepath, 'r', encoding='utf8') as f:
+    with open(options_filepath, 'r') as f:
         options_content=f.read()
 except Exception as e:
     options_content="lang:he_il"
@@ -76,9 +78,9 @@ except Exception as e:
 
 print('....')
 try:
-    with open(launcher_profiles_filepath, 'w', encoding='utf8') as f:
+    with open(launcher_profiles_filepath, 'w') as f:
         f.write(json.dumps(launcher_profiles_content))
-    with open(options_filepath, 'w', encoding='utf8') as f:
+    with open(options_filepath, 'w') as f:
         f.write(options_content)
 except Exception as e:
     input('(Error 2)Error editing minecraft files. Try:\n' +

@@ -14,3 +14,5 @@ copy %lang%_s%server%_servers.dat servers.dat
 pyinstaller installer.py --name installer_%lang%_s%server% --onefile --add-data settings.json;data --add-data servers.dat;data
 
 del settings.json servers.dat
+
+pause
