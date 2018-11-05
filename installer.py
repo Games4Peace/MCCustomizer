@@ -4,7 +4,7 @@ import json
 import re
 from shutil import copyfile
 
-print("version 1.0_7")
+print("version 1.1")
 
 local_path = ''
 if hasattr(sys, 'frozen'):
