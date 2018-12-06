@@ -4,7 +4,7 @@ import json
 import re
 from shutil import copyfile
 
-print("version 1.1")
+print("version 1.2")
 
 local_path = ''
 if hasattr(sys, 'frozen'):
@@ -35,7 +35,7 @@ options_content = ''
 try:
     with open(launcher_profiles_filepath, 'r') as f:
         launcher_profiles_content=json.loads(f.read())
-except FileNotFoundError as e:
+except Exception as e:
     launcher_profiles_content={}
 
 try:
@@ -103,4 +103,4 @@ except Exception as e:
         '\t3. Contacting a Games4Peace tech-person with this msg:\n\n' + str(e))
     exit()
 
-input('Finished installation.\nPlease run launcher, than press "Play" to test the game is working.')
+raw_input('Finished installation.\nPlease run launcher, than press "Play" to test the game is working.')
