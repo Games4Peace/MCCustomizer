@@ -3,8 +3,19 @@ import os
 import json
 import re
 from shutil import copyfile
+import argparse
 
-print("version 1.2")
+print("version 1.3")
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-v", "--verbose", help="increase output verbosity", action="store_true")
+parser.add_argument(
+    'minecraftPath', nargs='?', default=os.path.join(os.environ['APPDATA'], '.minecraft'),
+    help='the path to the .minecraft folder')
+parser.parse_args()
+
+args = parser.parse_args()
 
 local_path = ''
 if hasattr(sys, 'frozen'):
@@ -26,7 +37,9 @@ except Exception as e:
     exit()
 
 print('..')
-minecraft_filepath = os.path.join(os.environ['APPDATA'], '.minecraft')
+minecraft_filepath = args.minecraftPath
+if(args.verbose):
+    print("Using minecraft path: " + minecraft_filepath)
 launcher_profiles_filepath = os.path.join(minecraft_filepath, 'launcher_profiles.json')
 options_filepath = os.path.join(minecraft_filepath, 'options.txt')
 
@@ -36,12 +49,16 @@ try:
     with open(launcher_profiles_filepath, 'r') as f:
         launcher_profiles_content=json.loads(f.read())
 except Exception as e:
+    if(args.verbose):
+        print("Couldn't find profiles file, creating from default")
     launcher_profiles_content={}
 
 try:
     with open(options_filepath, 'r') as f:
         options_content=f.read()
 except Exception as e:
+    if(args.verbose):
+        print("Couldn't find options file, creating from default")
     options_content="lang:he_il"
 
 print('...')
